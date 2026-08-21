@@ -15,7 +15,10 @@
 
     <div class="toolbar">
       <input type="search" id="search" placeholder="Buscar...">
-      <p class="result-count" id="result-count"></p>
+      <div class="toolbar-row">
+        <p class="result-count" id="result-count"></p>
+        <button type="button" class="play-btn" id="play-btn" style="--accent: var(--accent-requerimientos)">&#9654; Jugar</button>
+      </div>
     </div>
 
     <div class="card-grid" id="card-grid"></div>
@@ -52,6 +55,10 @@
       }
       searchInput.addEventListener("input", update);
       update();
+
+      document.getElementById("play-btn").addEventListener("click", () => {
+        startFlashcardGame(filterFlashcards(baseItems, searchInput.value));
+      });
     }
   </script>
 </body>

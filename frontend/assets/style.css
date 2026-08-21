@@ -151,6 +151,197 @@ header p {
   font-size: 0.85rem;
 }
 
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.toolbar-row .result-count {
+  margin: 0;
+}
+
+.play-btn {
+  --accent: var(--accent-glosario);
+  appearance: none;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  padding: 0.55rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.play-btn:hover {
+  background: var(--accent);
+  color: #0b0d11;
+}
+
+/* Flashcard game overlay */
+.fc-game-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.96);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1.75rem;
+}
+
+.fc-game-top {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fc-game-progress {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.fc-game-close {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.fc-game-close:hover {
+  border-color: var(--accent-glosario);
+}
+
+.fc-game-card {
+  width: 100%;
+  max-width: 560px;
+  min-height: 320px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  text-align: center;
+  user-select: none;
+}
+
+.fc-game-card:hover,
+.fc-game-card.flipped {
+  border-color: var(--accent-glosario);
+}
+
+.fc-game-face {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fc-game-card:not(.flipped) .fc-game-front {
+  display: flex;
+}
+
+.fc-game-card.flipped .fc-game-back {
+  display: flex;
+}
+
+.fc-game-id {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.fc-game-term {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.fc-game-hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.fc-game-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fc-game-description {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.fc-game-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.fc-game-btn {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fc-game-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.fc-game-btn:not(:disabled):hover {
+  border-color: var(--accent-glosario);
+}
+
+.fc-game-btn-primary {
+  background: var(--accent-glosario);
+  border-color: var(--accent-glosario);
+  color: #0b0d11;
+}
+
+.fc-game-done {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fc-game-done-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.fc-game-done-text {
+  color: var(--muted);
+  margin: 0;
+}
+
 /* Flashcard grid */
 .card-grid {
   display: grid;
