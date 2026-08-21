@@ -181,6 +181,26 @@ header p {
   color: #0b0d11;
 }
 
+.play-all-btn {
+  --accent: var(--accent-glosario);
+  appearance: none;
+  border: none;
+  background: var(--accent);
+  color: #0b0d11;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.play-all-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
 /* Flashcard game overlay */
 .fc-game-overlay {
   position: fixed;

@@ -27,6 +27,18 @@
     </a>
   </div>
 
+  <button type="button" class="play-all-btn" id="play-all-btn">&#9654; Jugar todo</button>
+
   <a class="back-link" href="../../../ceneval.html">&larr; Back to CENEVAL</a>
+
+  <script src="../../../../backend/data/glossary.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${GLOSSARY.length} términos)`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(GLOSSARY);
+    });
+  </script>
 </body>
 </html>

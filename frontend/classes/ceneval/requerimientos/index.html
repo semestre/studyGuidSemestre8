@@ -23,6 +23,19 @@
     </a>
   </div>
 
+  <button type="button" class="play-all-btn" id="play-all-btn" style="--accent: var(--accent-requerimientos)">&#9654; Jugar todo</button>
+
   <a class="back-link" href="../../../ceneval.html">&larr; Back to CENEVAL</a>
+
+  <script src="../../../../backend/data/requerimientos.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const allRequerimientos = [...REQUERIMIENTOS_DEFINITIONS, ...REQUERIMIENTOS_EXAMPLES];
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${allRequerimientos.length})`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(allRequerimientos);
+    });
+  </script>
 </body>
 </html>
