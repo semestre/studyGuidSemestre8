@@ -1,0 +1,221 @@
+:root {
+  --bg: #0f1115;
+  --card-bg: #1a1d24;
+  --card-hover: #22262f;
+  --text: #f2f2f2;
+  --muted: #9aa0aa;
+  --accent-ceneval: #4f8cff;
+  --accent-bi: #ff9f43;
+  --accent-glosario: #4f8cff;
+  --accent-requerimientos: #2ecc71;
+  --border: #2a2e37;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 2rem;
+}
+
+body.center-page {
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.class-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.class-btn {
+  --accent: var(--accent-ceneval);
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  min-width: 220px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  border-top: 4px solid var(--accent);
+}
+
+.class-btn:hover,
+.class-btn:focus-visible {
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.class-btn .subtitle {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.class-btn.bi {
+  --accent: var(--accent-bi);
+}
+
+.back-link {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.placeholder {
+  text-align: center;
+  color: var(--muted);
+  max-width: 420px;
+}
+
+/* Page container for flashcard list pages (not vertically centered) */
+.page {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.page header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.page .back-link {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Toolbar (search box on "all" views) */
+.toolbar {
+  margin-bottom: 1.5rem;
+}
+
+.toolbar input[type="search"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.toolbar input[type="search"]:focus {
+  outline: none;
+  border-color: var(--accent-glosario);
+}
+
+.result-count {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Flashcard grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.flashcard {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: default;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.flashcard .fc-id {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.flashcard .fc-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0.25rem 0 0.4rem;
+}
+
+.flashcard .fc-subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.flashcard .fc-toggle {
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--accent-glosario);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.flashcard .fc-toggle:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.flashcard .fc-description {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+  display: none;
+}
+
+.flashcard.expanded .fc-description {
+  display: block;
+}
+
+.flashcard.expanded {
+  border-color: var(--accent-glosario);
+}

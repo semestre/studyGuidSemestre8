@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glosario</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; Back to Glosario</a>
+    <header>
+      <h1 id="page-title">Glosario</h1>
+    </header>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Buscar término...">
+      <p class="result-count" id="result-count"></p>
+    </div>
+
+    <div class="card-grid" id="card-grid"></div>
+  </div>
+
+  <script src="../../../data/glossary.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const range = getQueryParam("range") || "all";
+    const ranges = {
+      all: { label: "Glosario completo", filter: () => GLOSSARY },
+      "1-20": { label: "Términos 1 - 20", filter: () => GLOSSARY.filter((t) => t.id >= 1 && t.id <= 20) },
+      "21-40": { label: "Términos 21 - 40", filter: () => GLOSSARY.filter((t) => t.id >= 21 && t.id <= 40) },
+    };
+
+    const current = ranges[range] || ranges.all;
+    document.getElementById("page-title").textContent = current.label;
+    const baseItems = current.filter();
+
+    const grid = document.getElementById("card-grid");
+    const searchInput = document.getElementById("search");
+    const resultCount = document.getElementById("result-count");
+
+    function update() {
+      const items = filterFlashcards(baseItems, searchInput.value);
+      renderFlashcards(grid, items);
+      resultCount.textContent = `${items.length} término${items.length === 1 ? "" : "s"}`;
+    }
+
+    searchInput.addEventListener("input", update);
+    update();
+  </script>
+</body>
+</html>

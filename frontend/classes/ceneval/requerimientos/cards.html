@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requerimientos</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; Back to Requerimientos</a>
+    <header>
+      <h1 id="page-title">Requerimientos</h1>
+    </header>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Buscar...">
+      <p class="result-count" id="result-count"></p>
+    </div>
+
+    <div class="card-grid" id="card-grid"></div>
+    <p class="placeholder" id="empty-state" style="display:none"></p>
+  </div>
+
+  <script src="../../../data/requerimientos.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const type = getQueryParam("type") || "definitions";
+    const types = {
+      definitions: { label: "Definiciones — Taxonomía de Requerimientos", items: REQUERIMIENTOS_DEFINITIONS },
+      examples: { label: "Ejemplos — Requerimientos clasificados (1-50)", items: REQUERIMIENTOS_EXAMPLES },
+    };
+
+    const current = types[type] || types.definitions;
+    document.getElementById("page-title").textContent = current.label;
+    const baseItems = current.items;
+
+    const grid = document.getElementById("card-grid");
+    const searchInput = document.getElementById("search");
+    const resultCount = document.getElementById("result-count");
+    const emptyState = document.getElementById("empty-state");
+
+    if (baseItems.length === 0) {
+      document.querySelector(".toolbar").style.display = "none";
+      emptyState.textContent = "Aún no se ha agregado contenido para esta sección. Se agregará cuando se procese el PDF correspondiente.";
+      emptyState.style.display = "block";
+    } else {
+      function update() {
+        const items = filterFlashcards(baseItems, searchInput.value);
+        renderFlashcards(grid, items);
+        resultCount.textContent = `${items.length} resultado${items.length === 1 ? "" : "s"}`;
+      }
+      searchInput.addEventListener("input", update);
+      update();
+    }
+  </script>
+</body>
+</html>
