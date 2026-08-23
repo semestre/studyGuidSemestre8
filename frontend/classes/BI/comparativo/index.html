@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparativo BI</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body class="center-page">
+  <header>
+    <h1>Qlik Sense vs. Tableau vs. Power BI vs. Looker</h1>
+    <p>Choose a topic</p>
+  </header>
+
+  <div class="class-grid">
+    <a class="class-btn" style="--accent: var(--accent-bi)" href="cards.html?type=perfil">
+      Perfil de cada herramienta
+      <span class="subtitle">Quién la desarrolla y su enfoque</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-bi)" href="cards.html?type=detalle">
+      Comparación detallada
+      <span class="subtitle">13 características lado a lado</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-bi)" href="cards.html?type=puntuacion">
+      Puntuación y recomendación
+      <span class="subtitle">Evaluación cuantitativa (máx. 60)</span>
+    </a>
+  </div>
+
+  <button type="button" class="play-all-btn" id="play-all-btn" style="--accent: var(--accent-bi)">&#9654; Jugar todo</button>
+
+  <a class="back-link" href="../../../bi.html">&larr; Back to BI</a>
+
+  <script src="../../../../backend/data/bi.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const allBiComparativo = [
+      ...BI_COMPARATIVO_PERFIL,
+      ...BI_COMPARATIVO_DETALLE,
+      ...BI_COMPARATIVO_PUNTUACION,
+    ];
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${allBiComparativo.length})`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(allBiComparativo);
+    });
+  </script>
+</body>
+</html>
