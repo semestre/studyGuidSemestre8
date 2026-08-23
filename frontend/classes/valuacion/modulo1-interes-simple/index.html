@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 — Interés Simple</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body class="center-page">
+  <header>
+    <h1>Módulo 1 — Interés Simple</h1>
+    <p>Choose a topic</p>
+  </header>
+
+  <div class="class-grid">
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=conceptos">
+      Conceptos y Variables
+      <span class="subtitle">Qué es, C, i, t, M, crecimiento lineal</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=formulas">
+      Fórmulas
+      <span class="subtitle">M, I, C, i, t despejadas</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos">
+      Ejemplos Resueltos
+      <span class="subtitle">Los 5 ejemplos paso a paso</span>
+    </a>
+  </div>
+
+  <button type="button" class="play-all-btn" id="play-all-btn" style="--accent: var(--accent-valuacion)">&#9654; Jugar todo</button>
+
+  <a class="back-link" href="../../../valuacion.html">&larr; Back to Valuación</a>
+
+  <script src="../../../../backend/data/valuacion.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const allValuacionM1 = [
+      ...VALUACION_M1_CONCEPTOS,
+      ...VALUACION_M1_FORMULAS,
+      ...VALUACION_M1_EJEMPLOS,
+    ];
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${allValuacionM1.length})`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(allValuacionM1);
+    });
+  </script>
+</body>
+</html>

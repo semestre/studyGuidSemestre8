@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 — Interés Simple</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <a class="back-link" href="index.html">&larr; Back to Módulo 1</a>
+    <header>
+      <h1 id="page-title">Módulo 1 — Interés Simple</h1>
+    </header>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Buscar...">
+      <div class="toolbar-row">
+        <p class="result-count" id="result-count"></p>
+        <button type="button" class="play-btn" id="play-btn" style="--accent: var(--accent-valuacion)">&#9654; Jugar</button>
+      </div>
+    </div>
+
+    <div class="card-grid" id="card-grid"></div>
+  </div>
+
+  <script src="../../../../backend/data/valuacion.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const type = getQueryParam("type") || "conceptos";
+    const types = {
+      conceptos: { label: "Conceptos y Variables", items: VALUACION_M1_CONCEPTOS },
+      formulas: { label: "Fórmulas", items: VALUACION_M1_FORMULAS },
+      ejemplos: { label: "Ejemplos Resueltos", items: VALUACION_M1_EJEMPLOS },
+    };
+
+    const current = types[type] || types.conceptos;
+    document.getElementById("page-title").textContent = current.label;
+    const baseItems = current.items;
+
+    const grid = document.getElementById("card-grid");
+    const searchInput = document.getElementById("search");
+    const resultCount = document.getElementById("result-count");
+
+    function update() {
+      const items = filterFlashcards(baseItems, searchInput.value);
+      renderFlashcards(grid, items);
+      resultCount.textContent = `${items.length} resultado${items.length === 1 ? "" : "s"}`;
+    }
+
+    searchInput.addEventListener("input", update);
+    update();
+
+    document.getElementById("play-btn").addEventListener("click", () => {
+      startFlashcardGame(filterFlashcards(baseItems, searchInput.value));
+    });
+  </script>
+</body>
+</html>
