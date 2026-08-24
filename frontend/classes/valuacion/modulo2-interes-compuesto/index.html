@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2 — Interés Compuesto</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body class="center-page">
+  <header>
+    <h1>Módulo 2 — Interés Compuesto</h1>
+    <p>Choose a topic</p>
+  </header>
+
+  <div class="class-grid">
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=conceptos">
+      Conceptos
+      <span class="subtitle">Compuesto, capitalización, tasas nominal/efectiva</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=formulas">
+      Fórmulas
+      <span class="subtitle">M, C, i, n, tasa efectiva, tasas equivalentes</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos1-7">
+      Ejemplos 1-7 — Interés Compuesto
+      <span class="subtitle">Monto, valor presente, tasa, periodos</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos8-11">
+      Ejemplos 8-11 — Ecuaciones de Valor
+      <span class="subtitle">Renegociaciones y fecha focal</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos12-14">
+      Ejemplos 12-14 — Tasa Nominal/Efectiva
+      <span class="subtitle">Tasa efectiva anual y tasas equivalentes</span>
+    </a>
+  </div>
+
+  <button type="button" class="play-all-btn" id="play-all-btn" style="--accent: var(--accent-valuacion)">&#9654; Jugar todo</button>
+
+  <a class="back-link" href="../../../valuacion.html">&larr; Back to Valuación</a>
+
+  <script src="../../../../backend/data/valuacion.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const allValuacionM2 = [
+      ...VALUACION_M2_CONCEPTOS,
+      ...VALUACION_M2_FORMULAS,
+      ...VALUACION_M2_EJEMPLOS_1_7,
+      ...VALUACION_M2_EJEMPLOS_8_11,
+      ...VALUACION_M2_EJEMPLOS_12_14,
+    ];
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${allValuacionM2.length})`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(allValuacionM2);
+    });
+  </script>
+</body>
+</html>
