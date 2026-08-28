@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3 — Anualidades</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body class="center-page">
+  <header>
+    <h1>Módulo 3 — Anualidades</h1>
+    <p>Choose a topic</p>
+  </header>
+
+  <div class="class-grid">
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=conceptos">
+      Conceptos
+      <span class="subtitle">Ordinaria, anticipada, diferida, amortización</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=formulas">
+      Fórmulas
+      <span class="subtitle">Valor presente y futuro, ordinaria y anticipada</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos1-8">
+      Ejemplos 1-8 — Ordinarias (Vencidas)
+      <span class="subtitle">Valor presente, futuro, n, i</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos9-12">
+      Ejemplos 9-12 — Anticipadas (Due)
+      <span class="subtitle">Primer pago inmediato</span>
+    </a>
+    <a class="class-btn" style="--accent: var(--accent-valuacion)" href="cards.html?type=ejemplos13-20">
+      Ejemplos 13-20 — Diferidas
+      <span class="subtitle">Periodo de gracia</span>
+    </a>
+  </div>
+
+  <button type="button" class="play-all-btn" id="play-all-btn" style="--accent: var(--accent-valuacion)">&#9654; Jugar todo</button>
+
+  <a class="back-link" href="../../../valuacion.html">&larr; Back to Valuación</a>
+
+  <script src="../../../../backend/data/valuacion.js"></script>
+  <script src="../../../assets/flashcards.js"></script>
+  <script>
+    const allValuacionM3 = [
+      ...VALUACION_M3_CONCEPTOS,
+      ...VALUACION_M3_FORMULAS,
+      ...VALUACION_M3_EJEMPLOS_1_8,
+      ...VALUACION_M3_EJEMPLOS_9_12,
+      ...VALUACION_M3_EJEMPLOS_13_20,
+    ];
+    const playAllBtn = document.getElementById("play-all-btn");
+    playAllBtn.textContent = `▶ Jugar todo (${allValuacionM3.length})`;
+    playAllBtn.addEventListener("click", () => {
+      startFlashcardGame(allValuacionM3);
+    });
+  </script>
+</body>
+</html>
